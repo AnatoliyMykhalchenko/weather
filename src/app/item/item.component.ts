@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { faCoffee, faCloud } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faCloud, faTemperatureLow, faFingerprint, faTint, faBatteryHalf } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { GetWeatherService } from '../services/get-weather.service';
@@ -12,16 +12,14 @@ import { GenerateIconService } from './../services/generate-icon.service';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent {
   private weatherItem = this.weatherService.getWeather();
-  private iconUrl: Observable<string> = this.weatherItem.pipe(
-    switchMap(weatherItem => {
-    console.log(weatherItem.weather[0].icon);
-    console.log(this.iconService.getIconUrl(weatherItem.weather[0].icon))
-    return this.iconService.getIconUrl(weatherItem.weather[0].icon)
-    }),
-  );
+
   faCloud = faCloud;
+  faTemp = faTemperatureLow;
+  faFinger = faFingerprint;
+  faTint = faTint;
+  faBattery = faBatteryHalf;
 
   cityControl = new FormControl('');
 
@@ -30,11 +28,6 @@ export class ItemComponent implements OnInit {
   });
 
   constructor(private weatherService: GetWeatherService, public iconService: GenerateIconService) {
-    // this.weatherItem.subscribe(console.log);
-  }
-
-  ngOnInit() {
-    // this.iconUrl.subscribe(console.log);
   }
 
   search() {
