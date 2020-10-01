@@ -1,0 +1,23 @@
+<form [formGroup]="cityForm">
+  <input type="text" [formControl]="cityControl" />
+  <button type="button" (click)="search()">Search</button>
+</form>
+<div *ngIf="weatherItem | async as item" class="item">
+  <img [src]="iconService.getIconUrl(item.weather[0].icon)" alt="" />
+  <div class="item-name">{{ item.name }}</div>
+  <fa-icon [icon]="faCloud"></fa-icon>
+  <div class="item-clouds">{{ "Хмарність: " + item.clouds.all + "%" }}</div>
+  <div class="item-temp">{{ "Температура: " + item.main.temp + "°C" }}</div>
+  <div class="item-feels">
+    {{ "Відчувається: " + item.main.feels_like + "°C" }}
+  </div>
+  <div class="item-humidity">
+    {{ "Вологість: " + item.main.humidity + "%" }}
+  </div>
+  <div class="item-pressure">
+    {{ "Тиск: " + item.main.pressure + " мм.рт.ст." }}
+  </div>
+  <div class="item-description">
+    {{ item.weather[0].description | titlecase }}
+  </div>
+</div>
