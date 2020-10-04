@@ -17,21 +17,7 @@ export class GetWeatherService {
         `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=bc85bf8ec162713673bd2afd22dc5883&units=metric&lang=ru`
       )
       .pipe(
-        map((item: any) => {
-          console.log(item);
-          const data: WeatherInterface = {
-            name: item.name,
-            clouds: item.clouds.all,
-            temp: item.main.temp,
-            feelsLike: item.main.feels_like,
-            humidity: item.main.humidity,
-            pressure: item.main.pressure,
-            description: item.weather[0].description,
-            icon: item.weather[0].icon
-          };
-          console.log(data);
-          return data;
-        })
+        map((item: any) => this.formatData(item)),
       );
   }
 
@@ -43,17 +29,23 @@ export class GetWeatherService {
       .pipe(
         map((data: any) => {
           console.log(data);
-          return data.list.map(item => ({
-            clouds: item.clouds.all,
-            temp: item.main.temp,
-            feelsLike: item.main.feels_like,
-            humidity: item.main.humidity,
-            pressure: item.main.pressure,
-            description: item.weather[0].description,
-            icon: item.weather[0].icon,
-            date: moment(item.dt_txt).format('DD.MM.YYYY HH:mm'),
-          }));
+          return data.list.map(item => this.formatData(item));
         })
       );
   }
+
+  formatData(data: any): WeatherInterface {
+    return ({
+    name: data.name,
+    clouds: data.clouds.all,
+    temp: data.main.temp,
+    feelsLike: data.main.feels_like,
+    humidity: data.main.humidity,
+    pressure: data.main.pressure,
+    description: data.weather[0].description,
+    icon: data.weather[0].icon,
+    date: moment(data.dt_txt).format('DD.MM.YYYY HH:mm'),
+    });
+  }
+
 }

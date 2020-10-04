@@ -1,0 +1,40 @@
+<div class="wrapper" *ngIf="data">
+  <div *ngFor="let hourlyItem of data" class="item">
+    <div class="row">
+      <img [src]="iconService.getIconUrl(hourlyItem.icon)" alt="" />
+      <div>{{ hourlyItem.date }}</div>
+    </div>
+    <ng-container>
+      <div class="row">
+        <fa-icon [icon]="faCloud"></fa-icon>
+        <div class="value">{{ hourlyItem.clouds + "%" }}</div>
+      </div>
+      <div class="row">
+        <fa-icon [icon]="faTemp"></fa-icon>
+        <div class="value">{{ hourlyItem.temp + "°C" }}</div>
+      </div>
+      <!-- <div class="row">
+            <fa-icon [icon]="faFinger"></fa-icon>
+            <div class="value">
+              {{ hourlyItem.feelsLike + "°C" }}
+            </div>
+          </div> -->
+      <!-- <div class="row">
+            <fa-icon [icon]="faTint"></fa-icon>
+            <div class="value">
+              {{ hourlyItem.humidity + "%" }}
+            </div>
+          </div> -->
+      <!-- <div class="row">
+            <fa-icon [icon]="faBattery"></fa-icon>
+            <div class="value">
+              {{ hourlyItem.pressure + " мм.рт.ст." }}
+            </div>
+          </div> -->
+    </ng-container>
+
+    <div class="item-description">
+      {{ hourlyItem.description | titlecase }}
+    </div>
+  </div>
+</div>
