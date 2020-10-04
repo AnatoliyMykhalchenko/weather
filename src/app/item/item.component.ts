@@ -16,7 +16,7 @@ export class ItemComponent {
   toggleInfo = false;
 
   errorSubject$ = new Subject<boolean>()
-  private weatherItem: Observable<any> = this.weatherService.getWeather();
+  weatherItem: Observable<any> = this.weatherService.getWeather();
   weatherArr: Observable<WeatherInterface[]> = this.weatherService.getHourlyWeather();
 
   faCloud = faCloud;
