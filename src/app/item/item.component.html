@@ -1,23 +1,49 @@
 <form [formGroup]="cityForm">
-  <input type="text" [formControl]="cityControl" />
+  <input type="text" [formControl]="cityControl" placeholder="Введіть назву міста" />
   <button type="button" (click)="search()">Search</button>
 </form>
-<div *ngIf="weatherItem | async as item" class="item">
-  <img [src]="iconService.getIconUrl(item.weather[0].icon)" alt="" />
-  <div class="item-name">{{ item.name }}</div>
-  <fa-icon [icon]="faCloud"></fa-icon>
-  <div class="item-clouds">{{ "Хмарність: " + item.clouds.all + "%" }}</div>
-  <div class="item-temp">{{ "Температура: " + item.main.temp + "°C" }}</div>
-  <div class="item-feels">
-    {{ "Відчувається: " + item.main.feels_like + "°C" }}
+<div *ngIf="weatherItem | async as item" class="item" (click)="showInfo()">
+  <div class="row">
+    <div class="item-name">{{ item.name }}</div>
+    <img [src]="iconService.getIconUrl(item.icon)" alt="" />
   </div>
-  <div class="item-humidity">
-    {{ "Вологість: " + item.main.humidity + "%" }}
-  </div>
-  <div class="item-pressure">
-    {{ "Тиск: " + item.main.pressure + " мм.рт.ст." }}
-  </div>
+  <ng-container *ngIf="toggleInfo">
+    <div class="row">
+      <fa-icon [icon]="faCloud"></fa-icon>
+      <div class="value">{{ item.clouds + "%" }}</div>
+    </div>
+    <div class="row">
+      <fa-icon [icon]="faTemp"></fa-icon>
+      <div class="value">{{ item.temp + "°C" }}</div>
+    </div>
+    <div class="row">
+      <fa-icon [icon]="faFinger"></fa-icon>
+      <div class="value">
+        {{ item.feelsLike + "°C" }}
+      </div>
+    </div>
+    <div class="row">
+      <fa-icon [icon]="faTint"></fa-icon>
+      <div class="value">
+        {{ item.humidity + "%" }}
+      </div>
+    </div>
+    <div class="row">
+      <fa-icon [icon]="faBattery"></fa-icon>
+      <div class="value">
+        {{ item.pressure + " мм.рт.ст." }}
+      </div>
+    </div>
+  </ng-container>
+
   <div class="item-description">
-    {{ item.weather[0].description | titlecase }}
+    {{ item.description | titlecase }}
   </div>
+</div>
+
+
+<app-hourly-weather [data]="weatherArr | async"></app-hourly-weather>
+
+<div *ngIf="errorSubject$ | async" style="color: red;">
+  Невірно введена назва міста
 </div>
