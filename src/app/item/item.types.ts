@@ -4,7 +4,8 @@ export interface WeatherInterface {
   feelsLike: number;
   humidity: number;
   icon: string;
-  name: string;
+  name?: string;
   pressure: number;
   temp: number;
+  date?: any;
 }
