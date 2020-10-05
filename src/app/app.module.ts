@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ItemComponent } from './item/item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HourlyWeatherComponent } from './hourly-weather/hourly-weather.component';
+import { MainInfoComponent } from './main-info/main-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemComponent,
     HourlyWeatherComponent,
+    MainInfoComponent,
   ],
   imports: [
     BrowserModule,

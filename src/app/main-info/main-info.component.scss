@@ -1,0 +1,30 @@
+:host {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    align-items: center;
+    font-size: 20px;
+    border: 2px solid black;
+    padding: 15px 40px;
+    background-color: ghostwhite;
+
+    .title {
+        font-size: 50px;
+    }
+
+    img {
+        width: 170px;
+    }
+
+    .info-item {
+        text-align: center;
+        height: 50%;
+
+        .ng-fa-icon {
+            color: rgb(54, 115, 117);
+        }
+    }
+
+
+}

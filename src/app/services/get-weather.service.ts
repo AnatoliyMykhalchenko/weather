@@ -1,9 +1,10 @@
-import { WeatherInterface } from './../item/item.types';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as moment from 'moment';
+import { combineLatest } from 'rxjs';
+import { ResolvedWeatherData, WeatherInterface } from './../item/item.types';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,22 @@ import * as moment from 'moment';
 export class GetWeatherService {
   constructor(private readonly http: HttpClient) {}
 
-  getWeather(cityName: string = 'Киев'): Observable<WeatherInterface> {
+  getResolvedData(cityName: string = 'Киев'): Observable<any> {
+    return combineLatest(
+      [
+        this.getWeather(cityName),
+        this.getHourlyWeather(cityName)
+      ]
+    ).pipe(
+      map(([ currentWeather, hourlyWeather ]): ResolvedWeatherData => ({
+        currentWeather,
+        hourlyWeather,
+        datesArr: this.formatByDates(hourlyWeather),
+      })),
+    );
+  }
+
+  getWeather(cityName: string): Observable<WeatherInterface> {
     return this.http
       .get(
         `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=bc85bf8ec162713673bd2afd22dc5883&units=metric&lang=ru`
@@ -21,7 +37,7 @@ export class GetWeatherService {
       );
   }
 
-  getHourlyWeather(cityName: string = 'Киев'): Observable<any> {
+  getHourlyWeather(cityName: string): Observable<WeatherInterface[]> {
     return this.http
       .get(
         `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&APPID=bc85bf8ec162713673bd2afd22dc5883&units=metric&lang=ru`
@@ -29,12 +45,14 @@ export class GetWeatherService {
       .pipe(
         map((data: any) => {
           console.log(data);
-          return data.list.map(item => this.formatData(item));
+          const arr = data.list.map(item => this.formatData(item));
+          return arr;
         })
       );
   }
 
   formatData(data: any): WeatherInterface {
+    console.log(data);
     return ({
     name: data.name,
     clouds: data.clouds.all,
@@ -45,7 +63,16 @@ export class GetWeatherService {
     description: data.weather[0].description,
     icon: data.weather[0].icon,
     date: moment(data.dt_txt).format('DD.MM.YYYY HH:mm'),
+    wind: data.wind.speed,
     });
+  }
+
+  formatByDates(arr: WeatherInterface[]) {
+    const newArr = arr.map(item => item.date).map(date => date.slice(0, -5).trim());
+    console.log(newArr);
+    const filteredArr = [... new Set(newArr)];
+    console.log(filteredArr);
+    return filteredArr;
   }
 
 }

@@ -18,42 +18,16 @@ form {
 
 }
 
-.item {
-  border: 4px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 300px;
-  background: linear-gradient(130deg, rgb(100, 100, 228), rgb(216, 213, 213));
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  padding: 15px;
-  margin-right: 5px;
-  margin-top: 10px;
-
-  &.hourly {
-    width: 175px;
-
-    &:hover {
-      cursor: default;
-    }
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &-name {
+  item-name {
     font-size: 35px;
   }
 
-  &-description {
+  item-description {
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 18px;
     text-align: center;
   }
-}
 
 .row {
   display: flex;

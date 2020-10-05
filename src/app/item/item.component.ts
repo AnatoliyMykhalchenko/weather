@@ -1,11 +1,11 @@
-import { WeatherInterface } from './item.types';
 import { Component } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { faBatteryHalf, faCloud, faFingerprint, faTemperatureLow, faTint } from "@fortawesome/free-solid-svg-icons";
-import { Observable, Subject, throwError, of } from "rxjs";
+import { Observable, of, Subject } from "rxjs";
 import { catchError, shareReplay, tap } from "rxjs/operators";
 import { GetWeatherService } from "../services/get-weather.service";
 import { GenerateIconService } from "./../services/generate-icon.service";
+import { WeatherInterface, ResolvedWeatherData } from './item.types';
 
 @Component({
   selector: 'app-item',
@@ -16,8 +16,10 @@ export class ItemComponent {
   toggleInfo = false;
 
   errorSubject$ = new Subject<boolean>()
-  weatherItem: Observable<any> = this.weatherService.getWeather();
-  weatherArr: Observable<WeatherInterface[]> = this.weatherService.getHourlyWeather();
+  // weatherItem: Observable<any> = this.weatherService.getWeather();
+  // weatherArr: Observable<WeatherInterface[]> = this.weatherService.getHourlyWeather();
+
+  data$: Observable<ResolvedWeatherData> = this.weatherService.getResolvedData();
 
   faCloud = faCloud;
   faTemp = faTemperatureLow;
@@ -35,13 +37,13 @@ export class ItemComponent {
     private weatherService: GetWeatherService,
     public iconService: GenerateIconService
   ) {
-    this.weatherService.getHourlyWeather().subscribe(console.log);
+    this.weatherService.getResolvedData().subscribe(console.log);
   }
 
   search() {
     if (this.cityControl.value) {
-      this.weatherItem = this.weatherService
-      .getWeather(this.cityControl.value)
+      this.data$ = this.weatherService
+      .getResolvedData(this.cityControl.value)
       .pipe(
         shareReplay(1),
         catchError(err => {
@@ -50,10 +52,9 @@ export class ItemComponent {
         }),
         tap(() => this.errorSubject$.next(false)),
         );
-      this.weatherArr = this.weatherService.getHourlyWeather(this.cityControl.value);
+      this.weatherService.getResolvedData(this.cityControl.value).subscribe(console.log);
     } else {
-      this.weatherItem = this.weatherService.getWeather();
-      this.weatherArr = this.weatherService.getHourlyWeather();
+      this.data$ = this.weatherService.getResolvedData();
       this.errorSubject$.next(false);
     }
   }

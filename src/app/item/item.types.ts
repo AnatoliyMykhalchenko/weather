@@ -7,5 +7,12 @@ export interface WeatherInterface {
   name?: string;
   pressure: number;
   temp: number;
+  wind: number;
   date?: any;
+}
+
+export interface ResolvedWeatherData {
+  currentWeather: WeatherInterface;
+  hourlyWeather: WeatherInterface[];
+  datesArr?: string[];
 }

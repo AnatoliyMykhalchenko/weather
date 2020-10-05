@@ -1,0 +1,40 @@
+<div>
+  <img [src]="iconService.getIconUrl(data.icon)" alt="" />
+  <div style="text-align: center;">
+    {{ data.description | titlecase }}
+  </div>
+</div>
+<div class="title">{{ data.name }}</div>
+<div class="info-item">
+  <fa-icon [icon]="faCloud"></fa-icon>
+  <div>{{ data.clouds + "%" }}</div>
+</div>
+<div class="info-item">
+  <fa-icon [icon]="faTemp"></fa-icon>
+  <div>{{ data.temp + "°C" }}</div>
+</div>
+<div class="info-item">
+  <fa-icon [icon]="faFinger"></fa-icon>
+  <div>
+    {{ data.feelsLike + "°C" }}
+  </div>
+</div>
+<div class="info-item">
+  <fa-icon [icon]="faTint"></fa-icon>
+  <div>
+    {{ data.humidity + "%" }}
+  </div>
+</div>
+<div class="info-item">
+  <fa-icon [icon]="faBattery"></fa-icon>
+  <div>
+    {{ data.pressure + " мм.рт.ст." }}
+  </div>
+</div>
+
+<div class="info-item">
+  <fa-icon [icon]="faWind"></fa-icon>
+  <div>
+    {{ data.wind + " м/с" }}
+  </div>
+</div>
