@@ -1,6 +1,6 @@
 import { WeatherInterface } from './../item/item.types';
-import { Component, OnInit, Input } from '@angular/core';
-import { faCloud, faTemperatureLow } from '@fortawesome/free-solid-svg-icons';
+import { Component, Input } from '@angular/core';
+import { faCloud, faTemperatureLow, faFingerprint } from '@fortawesome/free-solid-svg-icons';
 import { GenerateIconService } from '../services/generate-icon.service';
 
 @Component({
@@ -8,17 +8,19 @@ import { GenerateIconService } from '../services/generate-icon.service';
   templateUrl: './hourly-weather.component.html',
   styleUrls: ['./hourly-weather.component.scss']
 })
-export class HourlyWeatherComponent implements OnInit {
+export class HourlyWeatherComponent {
   @Input() data: WeatherInterface[];
+  @Input() dates: string[];
 
   faCloud = faCloud;
   faTemp = faTemperatureLow;
+  faFinger = faFingerprint;
 
   constructor(
     public iconService: GenerateIconService
   ) { }
 
-  ngOnInit() {
+  filterByDate(date: string, arr: WeatherInterface[]) {
+    return arr.filter(item => item.date.includes(date));
   }
-
 }

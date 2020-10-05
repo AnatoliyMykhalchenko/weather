@@ -4,7 +4,7 @@
 </form>
 <ng-container *ngIf="(data$ | async) as data" class="item" (click)="showInfo()">
   <app-main-info [data]=data.currentWeather></app-main-info>
-  <app-hourly-weather [data]="data.hourlyWeather"></app-hourly-weather>
+  <app-hourly-weather [data]="data.hourlyWeather" [dates]="data.datesArr"></app-hourly-weather>
 </ng-container>
 
 <div *ngIf="errorSubject$ | async" style="color: red;">
