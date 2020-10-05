@@ -1,6 +1,6 @@
 <form [formGroup]="cityForm">
   <input type="text" [formControl]="cityControl" placeholder="Введіть назву міста" />
-  <button type="button" (click)="search()">Search</button>
+  <button type="button" (click)="search()">Пошук</button>
 </form>
 <ng-container *ngIf="(data$ | async) as data" class="item" (click)="showInfo()">
   <app-main-info [data]=data.currentWeather></app-main-info>

@@ -7,6 +7,7 @@ import { ItemComponent } from './item/item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HourlyWeatherComponent } from './hourly-weather/hourly-weather.component';
 import { MainInfoComponent } from './main-info/main-info.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MainInfoComponent } from './main-info/main-info.component';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
