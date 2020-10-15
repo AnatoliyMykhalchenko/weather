@@ -1,12 +1,21 @@
-<form [formGroup]="cityForm">
-  <input type="text" [formControl]="cityControl" placeholder="Введіть назву міста" />
-  <button type="button" (click)="search()">Пошук</button>
-</form>
-<ng-container *ngIf="(data$ | async) as data" class="item" (click)="showInfo()">
-  <app-main-info [data]=data.currentWeather></app-main-info>
-  <app-hourly-weather [data]="data.hourlyWeather" [dates]="data.datesArr"></app-hourly-weather>
-</ng-container>
+<div class="wrapper">
+  <form [formGroup]="cityForm">
+    <input
+      type="text"
+      [formControl]="cityControl"
+      placeholder="Введіть назву міста"
+    />
+    <button (click)="search()">Пошук</button>
+  </form>
+  <ng-container *ngIf="data$ | async as data" class="item" (click)="showInfo()">
+    <app-main-info [data]="data.currentWeather" @fade></app-main-info>
+    <app-hourly-weather
+      [data]="data.hourlyWeather"
+      [dates]="data.datesArr"
+    ></app-hourly-weather>
+  </ng-container>
 
-<div *ngIf="errorSubject$ | async" style="color: red;">
-  Невірно введена назва міста
+  <div *ngIf="errorSubject$ | async" style="color: red;">
+    Невірно введена назва міста
+  </div>
 </div>

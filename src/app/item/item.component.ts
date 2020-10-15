@@ -1,21 +1,34 @@
-import { Component } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
-import { faBatteryHalf, faCloud, faFingerprint, faTemperatureLow, faTint } from "@fortawesome/free-solid-svg-icons";
-import { Observable, of, Subject } from "rxjs";
-import { catchError, shareReplay, tap } from "rxjs/operators";
-import { GetWeatherService } from "../services/get-weather.service";
-import { GenerateIconService } from "./../services/generate-icon.service";
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { faBatteryHalf, faCloud, faFingerprint, faTemperatureLow, faTint } from '@fortawesome/free-solid-svg-icons';
+import { Observable, of, Subject } from 'rxjs';
+import { catchError, shareReplay, tap } from 'rxjs/operators';
+import { GetWeatherService } from '../services/get-weather.service';
+import { GenerateIconService } from './../services/generate-icon.service';
 import { WeatherInterface, ResolvedWeatherData } from './item.types';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss']
+  styleUrls: ['./item.component.scss'],
+  animations: [
+    trigger('fade', [
+      state('void', style({ opacity: 1, transform: 'translateX(-120%)' })),
+      transition(':enter', [
+        animate('.5s .4s'),
+      ]),
+      transition(':leave', [
+        animate('.4s', style({ opacity: 0, marginBottom: '-200px' })),
+      ])
+    ])
+
+  ]
 })
 export class ItemComponent {
   toggleInfo = false;
 
-  errorSubject$ = new Subject<boolean>()
+  errorSubject$ = new Subject<boolean>();
   // weatherItem: Observable<any> = this.weatherService.getWeather();
   // weatherArr: Observable<WeatherInterface[]> = this.weatherService.getHourlyWeather();
 

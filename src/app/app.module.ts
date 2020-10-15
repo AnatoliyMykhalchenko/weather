@@ -10,6 +10,7 @@ import { HourlyWeatherComponent } from './hourly-weather/hourly-weather.componen
 import { ItemComponent } from './item/item.component';
 import { MainInfoComponent } from './main-info/main-info.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MomentPipe } from './hourly-weather/moment.pipe';
 
 
 
@@ -19,6 +20,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     ItemComponent,
     HourlyWeatherComponent,
     MainInfoComponent,
+    MomentPipe,
   ],
   imports: [
     BrowserModule,
