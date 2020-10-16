@@ -7,20 +7,18 @@
           <div>{{ hourlyItem.date | moment }}</div>
         </div>
         <ng-container>
-          <div class="row">
-            <fa-icon [icon]="faCloud"></fa-icon>
-            <div class="value">{{ hourlyItem.clouds + "%" }}</div>
-          </div>
-          <div class="row">
-            <fa-icon [icon]="faTemp"></fa-icon>
-            <div class="value">{{ hourlyItem.temp + "°C" }}</div>
-          </div>
-          <div class="row">
-            <fa-icon [icon]="faFinger"></fa-icon>
-            <div class="value">
-              {{ hourlyItem.feelsLike + "°C" }}
-            </div>
-          </div>
+          <app-info-item
+            [value]="hourlyItem.clouds + '%'"
+            [icon]="faCloud"
+          ></app-info-item>
+          <app-info-item
+            [value]="hourlyItem.temp + '°C'"
+            [icon]="faTemp"
+          ></app-info-item>
+          <app-info-item
+            [value]="hourlyItem.feelsLike + '°C'"
+            [icon]="faFinger"
+          ></app-info-item>
         </ng-container>
 
         <div class="item-description">

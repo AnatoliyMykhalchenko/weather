@@ -11,6 +11,7 @@ import { ItemComponent } from './item/item.component';
 import { MainInfoComponent } from './main-info/main-info.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MomentPipe } from './hourly-weather/moment.pipe';
+import { InfoItemComponent } from './shared/info-item/info-item.component';
 
 
 
@@ -21,6 +22,7 @@ import { MomentPipe } from './hourly-weather/moment.pipe';
     HourlyWeatherComponent,
     MainInfoComponent,
     MomentPipe,
+    InfoItemComponent,
   ],
   imports: [
     BrowserModule,

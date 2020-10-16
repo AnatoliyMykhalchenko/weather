@@ -16,7 +16,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     trigger('fade', [
       state('void', style({ opacity: 1, transform: 'translateX(-120%)' })),
       transition(':enter', [
-        animate('.5s .4s'),
+        animate('.2s .4s'),
       ]),
       transition(':leave', [
         animate('.4s', style({ opacity: 0, marginBottom: '-200px' })),
@@ -29,8 +29,6 @@ export class ItemComponent {
   toggleInfo = false;
 
   errorSubject$ = new Subject<boolean>();
-  // weatherItem: Observable<any> = this.weatherService.getWeather();
-  // weatherArr: Observable<WeatherInterface[]> = this.weatherService.getHourlyWeather();
 
   data$: Observable<ResolvedWeatherData> = this.weatherService.getResolvedData();
 

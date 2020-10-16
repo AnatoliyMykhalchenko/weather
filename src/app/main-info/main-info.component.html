@@ -5,36 +5,9 @@
   </div>
 </div>
 <div class="title">{{ data.name }}</div>
-<div class="info-item">
-  <fa-icon [icon]="faCloud"></fa-icon>
-  <div>{{ data.clouds + "%" }}</div>
-</div>
-<div class="info-item">
-  <fa-icon [icon]="faTemp"></fa-icon>
-  <div>{{ data.temp + "°C" }}</div>
-</div>
-<div class="info-item">
-  <fa-icon [icon]="faFinger"></fa-icon>
-  <div>
-    {{ data.feelsLike + "°C" }}
-  </div>
-</div>
-<div class="info-item">
-  <fa-icon [icon]="faTint"></fa-icon>
-  <div>
-    {{ data.humidity + "%" }}
-  </div>
-</div>
-<div class="info-item">
-  <fa-icon [icon]="faBattery"></fa-icon>
-  <div>
-    {{ data.pressure + " мм.рт.ст." }}
-  </div>
-</div>
-
-<div class="info-item">
-  <fa-icon [icon]="faWind"></fa-icon>
-  <div>
-    {{ data.wind + " м/с" }}
-  </div>
-</div>
+<app-info-item [icon]="faCloud" [value]="data.clouds + '%'"></app-info-item>
+<app-info-item [icon]="faTemp" [value]="data.temp + '°C'"></app-info-item>
+<app-info-item [icon]="faFinger" [value]="data.feelsLike + '°C'"></app-info-item>
+<app-info-item [icon]="faTint" [value]="data.humidity + '%'"></app-info-item>
+<app-info-item [icon]="faBattery" [value]="data.pressure + ' мм.рт.ст.'"></app-info-item>
+<app-info-item [icon]="faWind" [value]="data.wind + ' м/c'"></app-info-item>
