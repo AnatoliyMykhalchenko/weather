@@ -1,8 +1,8 @@
-import { WeatherInterface } from './../item/item.types';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input } from '@angular/core';
-import { faCloud, faTemperatureLow, faFingerprint } from '@fortawesome/free-solid-svg-icons';
 import { GenerateIconService } from '../services/generate-icon.service';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { icons } from '../shared/icons';
+import { WeatherInterface } from './../item/item.types';
 
 @Component({
   selector: 'app-hourly-weather',
@@ -22,9 +22,7 @@ export class HourlyWeatherComponent {
   @Input() data: WeatherInterface[];
   @Input() dates: string[];
 
-  faCloud = faCloud;
-  faTemp = faTemperatureLow;
-  faFinger = faFingerprint;
+  icons = icons;
 
   constructor(
     public iconService: GenerateIconService

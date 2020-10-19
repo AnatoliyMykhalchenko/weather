@@ -1,22 +1,18 @@
-import { Component, Input } from '@angular/core';
-import { faBatteryHalf, faCloud, faFingerprint, faTemperatureLow, faTint, faWind } from '@fortawesome/free-solid-svg-icons';
+import { Component, Input, Inject } from '@angular/core';
 import { GenerateIconService } from '../services/generate-icon.service';
+import { icons } from '../shared/icons';
 import { WeatherInterface } from './../item/item.types';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-main-info',
   templateUrl: './main-info.component.html',
   styleUrls: ['./main-info.component.scss']
 })
-export class MainInfoComponent  {
+export class MainInfoComponent {
   @Input() data: WeatherInterface;
 
-  faCloud = faCloud;
-  faTemp = faTemperatureLow;
-  faFinger = faFingerprint;
-  faTint = faTint;
-  faBattery = faBatteryHalf;
-  faWind = faWind;
+  icons = icons;
 
   constructor( readonly iconService: GenerateIconService) { }
 
