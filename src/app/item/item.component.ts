@@ -26,8 +26,6 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 export class ItemComponent {
-  toggleInfo = false;
-
   errorSubject$ = new Subject<boolean>();
 
   data$: Observable<ResolvedWeatherData> = this.weatherService.getResolvedData();
@@ -48,7 +46,6 @@ export class ItemComponent {
     private weatherService: GetWeatherService,
     public iconService: GenerateIconService
   ) {
-    this.weatherService.getResolvedData().subscribe(console.log);
   }
 
   search() {
@@ -63,14 +60,22 @@ export class ItemComponent {
         }),
         tap(() => this.errorSubject$.next(false)),
         );
-      this.weatherService.getResolvedData(this.cityControl.value).subscribe(console.log);
     } else {
       this.data$ = this.weatherService.getResolvedData();
       this.errorSubject$.next(false);
     }
   }
 
-  showInfo() {
-    this.toggleInfo = !this.toggleInfo;
+  consoleWeather(event) {
+    this.data$ = this.weatherService
+    .getResolvedData(event)
+    .pipe(
+      shareReplay(1),
+      catchError(err => {
+        this.errorSubject$.next(true);
+        return of();
+      }),
+      tap(() => this.errorSubject$.next(false)),
+      );
   }
 }

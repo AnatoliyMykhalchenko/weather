@@ -44,7 +44,6 @@ export class GetWeatherService {
       )
       .pipe(
         map((data: any) => {
-          console.log(data);
           const arr = data.list.map(item => this.formatData(item));
           return arr;
         })
@@ -52,7 +51,6 @@ export class GetWeatherService {
   }
 
   formatData(data: any): WeatherInterface {
-    console.log(data);
     return ({
     name: data.name,
     clouds: data.clouds.all,
@@ -69,9 +67,7 @@ export class GetWeatherService {
 
   formatByDates(arr: WeatherInterface[]) {
     const newArr = arr.map(item => item.date).map(date => date.slice(0, -5).trim());
-    console.log(newArr);
     const filteredArr = [... new Set(newArr)];
-    console.log(filteredArr);
     return filteredArr;
   }
 

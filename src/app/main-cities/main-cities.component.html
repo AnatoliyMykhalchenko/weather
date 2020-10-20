@@ -1,0 +1,3 @@
+<mat-button-toggle-group #group (change)="changeByToggle.emit($event.value);">
+  <mat-button-toggle *ngFor="let city of cities" [value]="city" [disabled]="group.value">{{ city }}</mat-button-toggle>
+</mat-button-toggle-group>
