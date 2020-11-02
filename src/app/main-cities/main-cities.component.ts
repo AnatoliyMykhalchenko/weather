@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { GetWeatherService } from '../services/get-weather.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { GetWeatherService } from '../services/get-weather.service';
   styleUrls: ['./main-cities.component.scss']
 })
 export class MainCitiesComponent {
+  @Input() cityName: string;
   @Output() changeByToggle = new EventEmitter();
   cities = ['Киев', 'Харьков', 'Одесса', 'Днепр', 'Донецк', 'Запорожье', 'Львов', 'Кривой Рог', 'Николаев', 'Мариуполь', 'Луганск', 'Винница', 'Херсон', 'Полтава'];
 

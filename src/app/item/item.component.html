@@ -7,8 +7,8 @@
     />
     <button (click)="search()">Пошук</button>
   </form>
-  <app-main-cities (changeByToggle)="consoleWeather($event)"></app-main-cities>
-  <ng-container *ngIf="data$ | async as data" class="item" (click)="showInfo()">
+  <app-main-cities (changeByToggle)="changeWeatherByToggle($event)" [cityName]="(data$ | async)?.currentWeather.name"></app-main-cities>
+  <ng-container *ngIf="data$ | async as data" class="item">
     <app-main-info [data]="data.currentWeather" @fade></app-main-info>
     <app-hourly-weather
       [data]="data.hourlyWeather"
