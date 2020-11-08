@@ -1,30 +1,23 @@
-<mat-tab-group animationDuration="500ms" @fade>
-  <mat-tab *ngFor="let date of dates" [label]="date">
-    <div class="wrapper">
-      <div *ngFor="let hourlyItem of filterByDate(date, data)" class="item">
-        <div class="row">
-          <img [src]="iconService.getIconUrl(hourlyItem.icon)" alt="" />
-          <div>{{ hourlyItem.date | moment }}</div>
-        </div>
-        <ng-container>
-          <app-info-item
-            [value]="hourlyItem.clouds + '%'"
-            [icon]="icons.faCloud"
-          ></app-info-item>
-          <app-info-item
-            [value]="hourlyItem.temp + '°C'"
-            [icon]="icons.faTemp"
-          ></app-info-item>
-          <app-info-item
-            [value]="hourlyItem.feelsLike + '°C'"
-            [icon]="icons.faFinger"
-          ></app-info-item>
-        </ng-container>
+<mat-card>
+  <mat-tab-group animationDuration="500ms" @fade>
+    <mat-tab *ngFor="let date of dates" [label]="date">
+      <div class="wrapper">
+        <mat-card *ngFor="let hourlyItem of filterByDate(date, data)" class="item">
+          <div>
+            <img [src]="iconService.getIconUrl(hourlyItem.icon)" alt="" />
+            <div>{{ hourlyItem.date | moment }}</div>
+          </div>
+          <ng-container>
+            <app-info-item [value]="hourlyItem.clouds + '%'" [icon]="icons.faCloud"></app-info-item>
+            <app-info-item [value]="hourlyItem.temp + '°C'" [icon]="icons.faTemp"></app-info-item>
+            <app-info-item [value]="hourlyItem.feelsLike + '°C'" [icon]="icons.faFinger"></app-info-item>
+          </ng-container>
 
-        <div class="item-description">
-          {{ hourlyItem.description | titlecase }}
-        </div>
+          <div class="item-description">
+            {{ hourlyItem.description | titlecase }}
+          </div>
+        </mat-card>
       </div>
-    </div>
-  </mat-tab>
-</mat-tab-group>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

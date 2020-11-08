@@ -1,22 +1,22 @@
 <div class="wrapper">
-  <form [formGroup]="cityForm">
-    <input
-      type="text"
-      [formControl]="cityControl"
-      placeholder="Введіть назву міста"
-    />
-    <button (click)="search()">Пошук</button>
-  </form>
-  <app-main-cities (changeByToggle)="changeWeatherByToggle($event)" [cityName]="(data$ | async)?.currentWeather.name"></app-main-cities>
+  <mat-card>
+    <form [formGroup]="cityForm">
+      <input type="text" [formControl]="cityControl" #city placeholder="Введіть назву міста" />
+      <button mat-raised-button color="primary" (click)="search(city.value)">Пошук</button>
+    </form>
+  </mat-card>
   <ng-container *ngIf="data$ | async as data" class="item">
-    <app-main-info [data]="data.currentWeather" @fade></app-main-info>
-    <app-hourly-weather
-      [data]="data.hourlyWeather"
-      [dates]="data.datesArr"
-    ></app-hourly-weather>
+    <app-main-cities (changeByToggle)="changeWeatherByToggle($event)" [cityName]="data.currentWeather.name">
+    </app-main-cities>
+    <app-main-info [data]="data.currentWeather"></app-main-info>
+    <app-hourly-weather [data]="data.hourlyWeather" [dates]="data.datesArr"></app-hourly-weather>
   </ng-container>
+  <div class="custom-spinner">
+    <mat-spinner *ngIf="isSpinnerShown$ | async"></mat-spinner>
+  </div>
 
   <div *ngIf="errorSubject$ | async" style="color: red;">
     Невірно введена назва міста
   </div>
+
 </div>

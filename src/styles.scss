@@ -1,9 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
 body {
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
-    background-color: #EFEEF5;
-
+    background-color: #efeef5;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: 'Russo One', sans-serif;
+}
+
+.mat-card, .mat-button-toggle, .mat-tab-label{
+    font-family: 'Russo One', sans-serif;
+}

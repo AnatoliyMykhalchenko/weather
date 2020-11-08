@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { GetWeatherService } from '../services/get-weather.service';
 
 import { ItemComponent } from './item.component';
 
@@ -8,7 +10,11 @@ describe('ItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ItemComponent ]
+      declarations: [ ItemComponent ],
+      imports: [HttpClientTestingModule],
+
+      providers: [ GetWeatherService ]
+
     })
     .compileComponents();
   }));

@@ -1,20 +1,20 @@
-:host {
+mat-card {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
   margin-bottom: 30px;
   align-items: center;
   font-size: 20px;
-  border: 2px solid black;
+  // border: 2px solid black;
   padding: 15px 40px;
   background: #deddea;
   color: #333141;
 
-  div:first-child {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-  }
+  // div:first-child {
+  //   display: flex;
+  //   flex-flow: column;
+  //   align-items: center;
+  // }
 
   .title {
     font-size: 50px;

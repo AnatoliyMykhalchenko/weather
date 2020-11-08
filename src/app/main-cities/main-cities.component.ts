@@ -9,7 +9,7 @@ import { GetWeatherService } from '../services/get-weather.service';
 export class MainCitiesComponent {
   @Input() cityName: string;
   @Output() changeByToggle = new EventEmitter();
-  cities = ['Киев', 'Харьков', 'Одесса', 'Днепр', 'Донецк', 'Запорожье', 'Львов', 'Кривой Рог', 'Николаев', 'Мариуполь', 'Луганск', 'Винница', 'Херсон', 'Полтава'];
+  cities = ['Киев', 'Харьков', 'Одесса', 'Днепр', 'Донецк', 'Запорожье', 'Львов', 'Кривой Рог', 'Николаев', 'Мариуполь'];
 
   constructor(readonly weatherService: GetWeatherService) {
   }

@@ -1,13 +1,16 @@
 :host {
-  .mat-button-toggle-group {
+  mat-card {
     margin-top: 20px;
+    background: #deddea;
+  }
+
+  .mat-button-toggle-group {
     border: none;
     width: 100%;
     justify-content: space-between;
 
     .mat-button-toggle {
       border: none;
-      width: 6%;
       background: none;
 
       button {

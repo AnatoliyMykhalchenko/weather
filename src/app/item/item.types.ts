@@ -9,6 +9,7 @@ export interface WeatherInterface {
   temp: number;
   wind: number;
   date?: any;
+  dayName?: string;
 }
 
 export interface ResolvedWeatherData {

@@ -1,29 +1,25 @@
-.wrapper {
-  display: flex;
-  flex-flow: wrap;
-
-  .item {
-    border: 2px solid #504d66;
-    box-shadow: inset 3px -1px 20px 0px #504d66;
+mat-card {
+  background: #deddea;
+  
+  .wrapper {
     display: flex;
-    flex-direction: column;
-    width: 170px;
-    background: linear-gradient(130deg, #8a85b1, #f8f9f3);
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
-    padding: 15px;
-    text-align: center;
-    margin-right: 5px;
+    flex-flow: wrap;
 
-    .row {
+    mat-card {
+      font-size: 12px;
+      margin-top: 5px;
+      box-shadow: inset 3px -1px 20px 0px #504d66;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-    }
+      flex-direction: column;
+      width: 90px;
+      background: linear-gradient(130deg, #8a85b1, #f8f9f3);
+      padding: 15px;
+      text-align: center;
+      margin-right: 5px;
 
-    &-description {
-      margin-top: 15px;
+      &-description {
+        margin-top: 15px;
+      }
     }
   }
 }

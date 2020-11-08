@@ -32,3 +32,40 @@ export class HourlyWeatherComponent {
     return arr.filter(item => item.date.includes(date));
   }
 }
+
+
+
+// import {MatTabChangeEvent, MatTabGroup} from '@angular/material';
+
+// @Directive({
+//   selector: '[mat-tab-scroll-fix]'
+// })
+// export class MatTabScrollFixDirective implements AfterViewInit {
+
+//   constructor(private matTabGroup: MatTabGroup) {
+
+//   }
+
+//   private scrollPosition: number;
+//   private tabChanging: boolean;
+
+//   ngAfterViewInit(): void {
+//     const scrollHandler = (event) => {
+//       if (this.tabChanging) {
+//         document.documentElement.scrollTop = this.scrollPosition;
+//       }
+//       this.scrollPosition = document.documentElement.scrollTop;
+//     };
+
+//     window.addEventListener('scroll', scrollHandler);
+
+//     this.matTabGroup.selectedTabChange.subscribe((tabChangeEvent: MatTabChangeEvent) => {
+//       this.tabChanging = false;
+//       document.documentElement.scrollTop = this.scrollPosition;
+//     });
+
+//     this.matTabGroup.selectedIndexChange.subscribe((index: number) => {
+//       this.tabChanging = true;
+//     });
+//   }
+// }

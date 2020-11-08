@@ -1,27 +1,29 @@
 .wrapper {
   padding: 50px 100px;
 
+  mat-card {
+    background: #deddea;
+  }
+
   form {
-    width: 100%;
-    height: 30px;
     display: flex;
     justify-content: space-between;
 
     input {
+      font-size: 22px;
       width: 88%;
       height: 100%;
-      font-size: 22px;
-      background: #e9e8f1;
       outline: none;
     }
 
     button {
       width: 10%;
-      height: 100%;
-      box-sizing: content-box;
+      // height: 100%;
+      // box-sizing: content-box;
       font-size: 22px;
-      background-color: #e9e8f1;
-      outline: none;
+      // background-color: #e9e8f1;
+      // outline: none;
+      background-color: #333141;
 
       &:hover {
         cursor: pointer;
@@ -29,4 +31,14 @@
       }
     }
   }
+
+  .mat-spinner {
+    margin: auto;
+    margin-top: 200px;
+  }
+}
+
+.custom-spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  margin: auto;
+  stroke: #333141;
 }

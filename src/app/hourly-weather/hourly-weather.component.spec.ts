@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GenerateIconService } from '../services/generate-icon.service';
 
 import { HourlyWeatherComponent } from './hourly-weather.component';
 
@@ -8,7 +12,9 @@ describe('HourlyWeatherComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HourlyWeatherComponent ]
+      declarations: [ HourlyWeatherComponent ],
+    imports: [HttpClientTestingModule, BrowserAnimationsModule],
+      providers: [ GenerateIconService, HttpClient ]
     })
     .compileComponents();
   }));
