@@ -63,8 +63,8 @@ export class GetWeatherService {
       return ({
         name: data.name,
         clouds: data.clouds.all,
-        temp: data.main.temp,
-        feelsLike: data.main.feels_like,
+        temp:  Math.round(data.main.temp),
+        feelsLike:  Math.round(data.main.feels_like),
         humidity: data.main.humidity,
         pressure: data.main.pressure,
         description: data.weather[0].description,

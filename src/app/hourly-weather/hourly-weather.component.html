@@ -1,19 +1,10 @@
 <mat-card>
-  <mat-tab-group animationDuration="500ms" @fade>
+  <mat-tab-group animationDuration="500ms">
     <mat-tab *ngFor="let date of dates" [label]="date">
-      <div class="wrapper">
-        <mat-card *ngFor="let hourlyItem of filterByDate(date, data)" class="item">
-          <div>
-            <img [src]="iconService.getIconUrl(hourlyItem.icon)" alt="" />
-            <div>{{ hourlyItem.date | moment }}</div>
-          </div>
-          <app-info-item [value]="hourlyItem.clouds + '%'" [icon]="icons.faCloud"></app-info-item>
-          <app-info-item [value]="hourlyItem.temp + '°C'" [icon]="icons.faTemp"></app-info-item>
-          <app-info-item [value]="hourlyItem.feelsLike + '°C'" [icon]="icons.faFinger"></app-info-item>
-          <div class="item-description">
-            {{ hourlyItem.description | titlecase }}
-          </div>
-        </mat-card>
+      <div fxLayout="row" fxLayoutGap="5px">
+        <ng-container *ngFor="let hourlyItem of filterByDate(date, data)">
+          <app-hourly-weather-item [hourlyItem]="hourlyItem"></app-hourly-weather-item>
+        </ng-container>
       </div>
     </mat-tab>
   </mat-tab-group>

@@ -5,8 +5,7 @@ import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { catchError, map, shareReplay, tap } from 'rxjs/operators';
 import { GetWeatherService } from '../services/get-weather.service';
 import { GenerateIconService } from './../services/generate-icon.service';
-import { WeatherInterface, ResolvedWeatherData } from './item.types';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ResolvedWeatherData } from './item.types';
 import { LoggerService } from '../services/logger/logger.service';
 
 @Component({
@@ -63,6 +62,7 @@ export class ItemComponent {
     } else {
       this.data$ = this.weatherService.getResolvedData();
       this.errorSubject$.next(false);
+      this.loadingSubject$.next(false);
     }
   }
 

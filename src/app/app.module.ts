@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -11,13 +12,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app.component';
+import { CityInputComponent } from './city-input/city-input.component';
 import { HourlyWeatherComponent } from './hourly-weather/hourly-weather.component';
 import { MomentPipe } from './hourly-weather/moment.pipe';
 import { ItemComponent } from './item/item.component';
 import { MainCitiesComponent } from './main-cities/main-cities.component';
 import { MainInfoComponent } from './main-info/main-info.component';
+import { HourlyWeatherItemComponent } from './shared/hourly-weather-item/hourly-weather-item.component';
 import { InfoItemComponent } from './shared/info-item/info-item.component';
-import { CityInputComponent } from './city-input/city-input.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
@@ -31,6 +33,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MainCitiesComponent,
     CityInputComponent,
     SpinnerComponent,
+    HourlyWeatherItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatButtonToggleModule,
     MatCardModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
