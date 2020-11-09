@@ -17,6 +17,7 @@ import { ItemComponent } from './item/item.component';
 import { MainCitiesComponent } from './main-cities/main-cities.component';
 import { MainInfoComponent } from './main-info/main-info.component';
 import { InfoItemComponent } from './shared/info-item/info-item.component';
+import { CityInputComponent } from './city-input/city-input.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { InfoItemComponent } from './shared/info-item/info-item.component';
     MomentPipe,
     InfoItemComponent,
     MainCitiesComponent,
+    CityInputComponent,
   ],
   imports: [
     BrowserModule,

@@ -34,11 +34,6 @@ export class ItemComponent {
   faTint = faTint;
   faBattery = faBatteryHalf;
 
-  cityControl = new FormControl('');
-
-  cityForm = new FormGroup({
-    cityControl: this.cityControl,
-  });
 
   constructor(
     private weatherService: GetWeatherService,
@@ -69,7 +64,6 @@ export class ItemComponent {
       this.data$ = this.weatherService.getResolvedData();
       this.errorSubject$.next(false);
     }
-    this.cityControl.reset();
   }
 
   changeWeatherByToggle(event) {

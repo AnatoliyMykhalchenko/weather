@@ -1,37 +1,6 @@
 .wrapper {
   padding: 50px 100px;
 
-  mat-card {
-    background: #deddea;
-  }
-
-  form {
-    display: flex;
-    justify-content: space-between;
-
-    input {
-      font-size: 22px;
-      width: 88%;
-      height: 100%;
-      outline: none;
-    }
-
-    button {
-      width: 10%;
-      // height: 100%;
-      // box-sizing: content-box;
-      font-size: 22px;
-      // background-color: #e9e8f1;
-      // outline: none;
-      background-color: #333141;
-
-      &:hover {
-        cursor: pointer;
-        background-color: #c8c6dd;
-      }
-    }
-  }
-
   .mat-spinner {
     margin: auto;
     margin-top: 200px;

@@ -1,10 +1,5 @@
 <div class="wrapper">
-  <mat-card>
-    <form [formGroup]="cityForm">
-      <input type="text" [formControl]="cityControl" #city placeholder="Введіть назву міста" />
-      <button mat-raised-button color="primary" (click)="search(city.value)">Пошук</button>
-    </form>
-  </mat-card>
+  <app-city-input (cityControlChangeValue)="search($event)" ></app-city-input>
   <ng-container *ngIf="data$ | async as data" class="item">
     <app-main-cities (changeByToggle)="changeWeatherByToggle($event)" [cityName]="data.currentWeather.name">
     </app-main-cities>
@@ -15,7 +10,7 @@
     <mat-spinner *ngIf="isSpinnerShown$ | async"></mat-spinner>
   </div>
 
-  <div *ngIf="errorSubject$ | async" style="color: red;">
+  <div *ngIf="errorSubject$ | async">
     Невірно введена назва міста
   </div>
 

@@ -1,0 +1,27 @@
+mat-card {
+	background: #deddea;
+}
+
+form {
+	display: flex;
+	justify-content: space-between;
+
+	input {
+		font-size: 22px;
+		width: 88%;
+		height: 100%;
+		outline: none;
+	}
+
+	button {
+		width: 10%;
+		font-size: 22px;
+		background-color: #333141;
+		color: #fff;
+
+		&:hover {
+			cursor: pointer;
+			background-color: #686774;
+		}
+	}
+}
