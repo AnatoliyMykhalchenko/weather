@@ -6,9 +6,7 @@
     <app-main-info [data]="data.currentWeather"></app-main-info>
     <app-hourly-weather [data]="data.hourlyWeather" [dates]="data.datesArr"></app-hourly-weather>
   </ng-container>
-  <div class="custom-spinner">
-    <mat-spinner *ngIf="isSpinnerShown$ | async"></mat-spinner>
-  </div>
+  <app-spinner [showSpinner]="isSpinnerShown$ | async"></app-spinner>
 
   <div *ngIf="errorSubject$ | async">
     Невірно введена назва міста

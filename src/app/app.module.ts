@@ -18,6 +18,7 @@ import { MainCitiesComponent } from './main-cities/main-cities.component';
 import { MainInfoComponent } from './main-info/main-info.component';
 import { InfoItemComponent } from './shared/info-item/info-item.component';
 import { CityInputComponent } from './city-input/city-input.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CityInputComponent } from './city-input/city-input.component';
     InfoItemComponent,
     MainCitiesComponent,
     CityInputComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
