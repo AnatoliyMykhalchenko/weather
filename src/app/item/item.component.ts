@@ -7,6 +7,7 @@ import { GetWeatherService } from '../services/get-weather.service';
 import { GenerateIconService } from './../services/generate-icon.service';
 import { ResolvedWeatherData } from './item.types';
 import { LoggerService } from '../services/logger/logger.service';
+import { AlertService } from '../services/alert/alert.service';
 
 @Component({
   selector: 'app-item',
@@ -38,11 +39,12 @@ export class ItemComponent {
     private weatherService: GetWeatherService,
     public iconService: GenerateIconService,
     private logger: LoggerService,
+    private alertService: AlertService,
   ) {
     weatherService.getResolvedData().subscribe(console.log);
   }
 
-  search(city) {
+  search(city?: string) {
     this.loadingSubject$.next(true);
     if (city) {
       this.data$ = this.weatherService
@@ -52,6 +54,8 @@ export class ItemComponent {
           catchError(err => {
             this.errorSubject$.next(true);
             this.logger.consoleMessage(err.error.message, '', 'red');
+            this.alertService.show();
+            this.search();
             return of();
           }),
           tap(() => {

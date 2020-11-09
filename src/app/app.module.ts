@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,6 +19,7 @@ import { MomentPipe } from './hourly-weather/moment.pipe';
 import { ItemComponent } from './item/item.component';
 import { MainCitiesComponent } from './main-cities/main-cities.component';
 import { MainInfoComponent } from './main-info/main-info.component';
+import { AlertComponent } from './services/alert/alert.component';
 import { HourlyWeatherItemComponent } from './shared/hourly-weather-item/hourly-weather-item.component';
 import { InfoItemComponent } from './shared/info-item/info-item.component';
 import { SpinnerComponent } from './spinner/spinner.component';
@@ -34,6 +36,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     CityInputComponent,
     SpinnerComponent,
     HourlyWeatherItemComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatButtonModule,
     MatProgressSpinnerModule,
     FlexLayoutModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
