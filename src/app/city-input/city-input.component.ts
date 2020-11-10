@@ -16,4 +16,11 @@ export class CityInputComponent {
   });
 
   constructor() {}
+
+  search() {
+    if (this.cityControl.value) {
+      this.cityControlChangeValue.emit(this.cityControl.value);
+      this.cityControl.reset();
+    }
+  }
 }

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { faBatteryHalf, faCloud, faFingerprint, faTemperatureLow, faTint } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import { catchError, map, shareReplay, tap } from 'rxjs/operators';
 import { AlertService } from '../services/alert/alert.service';
@@ -25,12 +24,6 @@ export class ItemComponent {
     map(([loading, error]) => loading && !error),
   );
 
-  faCloud = faCloud;
-  faTemp = faTemperatureLow;
-  faFinger = faFingerprint;
-  faTint = faTint;
-  faBattery = faBatteryHalf;
-
   constructor(
     private weatherService: GetWeatherService,
     public iconService: GenerateIconService,
@@ -41,12 +34,13 @@ export class ItemComponent {
   }
 
   search(city?: string) {
+    console.log(city);
     this.loadingSubject$.next(true);
     if (city) {
       this.data$ = this.weatherService.getResolvedData(city).pipe(
         shareReplay(1),
         catchError((err) => {
-          const caption = `Неправильное название города. Не существует такого города - ${city}. Проверьте написание`;
+          const caption = `Неправильное название города. Не существует такого города - ${city}. Проверьте написание.`;
           this.errorSubject$.next(true);
           this.logger.consoleMessage(err.error.message, '', 'red');
           this.alertService.show({
