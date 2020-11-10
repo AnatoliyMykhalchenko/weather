@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <app-city-input (cityControlChangeValue)="search($event)" ></app-city-input>
+  <app-city-input (cityControlChangeValue)="search($event)"></app-city-input>
   <ng-container *ngIf="data$ | async as data" class="item">
     <app-main-cities (changeByToggle)="changeWeatherByToggle($event)" [cityName]="data.currentWeather.name">
     </app-main-cities>
@@ -7,9 +7,4 @@
     <app-hourly-weather [data]="data.hourlyWeather" [dates]="data.datesArr"></app-hourly-weather>
   </ng-container>
   <app-spinner [showSpinner]="isSpinnerShown$ | async"></app-spinner>
-
-  <!-- <div *ngIf="errorSubject$ | async">
-    Невірно введена назва міста
-  </div> -->
-
 </div>

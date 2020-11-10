@@ -11,12 +11,11 @@ describe('MainCitiesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainCitiesComponent ],
+      declarations: [MainCitiesComponent],
       imports: [HttpClientTestingModule],
 
       providers: [GetWeatherService, HttpClient],
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

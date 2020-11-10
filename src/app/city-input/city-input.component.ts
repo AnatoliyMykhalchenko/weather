@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-city-input',
   templateUrl: './city-input.component.html',
-  styleUrls: ['./city-input.component.scss']
+  styleUrls: ['./city-input.component.scss'],
 })
 export class CityInputComponent {
   @Output() cityControlChangeValue = new EventEmitter();
@@ -15,6 +15,5 @@ export class CityInputComponent {
     cityControl: this.cityControl,
   });
 
-  constructor() { }
-
+  constructor() {}
 }

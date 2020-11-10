@@ -7,13 +7,12 @@ import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-main-info',
   templateUrl: './main-info.component.html',
-  styleUrls: ['./main-info.component.scss']
+  styleUrls: ['./main-info.component.scss'],
 })
 export class MainInfoComponent {
   @Input() data: WeatherInterface;
 
   icons = icons;
 
-  constructor( readonly iconService: GenerateIconService) { }
-
+  constructor(readonly iconService: GenerateIconService) {}
 }

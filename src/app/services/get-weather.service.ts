@@ -8,63 +8,52 @@ import { ResolvedWeatherData, WeatherInterface } from './../item/item.types';
 import { LoggerService } from './logger/logger.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GetWeatherService {
   weatherUrl = 'http://api.openweathermap.org/data/2.5/weather';
   forecastUrl = 'http://api.openweathermap.org/data/2.5/forecast';
   constructor(private readonly http: HttpClient, private readonly logger: LoggerService) {
     this.getDayName();
-   }
+  }
 
   getResolvedData(cityName: string = 'Киев'): Observable<any> {
-    return combineLatest(
-      [
-        this.getWeather(cityName),
-        this.getHourlyWeather(cityName)
-      ]
-    ).pipe(
-      map(([currentWeather, hourlyWeather]): ResolvedWeatherData => ({
-        currentWeather,
-        hourlyWeather,
-        datesArr: this.formatByDates(hourlyWeather),
-      })),
+    return combineLatest([this.getWeather(cityName), this.getHourlyWeather(cityName)]).pipe(
+      map(
+        ([currentWeather, hourlyWeather]): ResolvedWeatherData => ({
+          currentWeather,
+          hourlyWeather,
+          datesArr: this.formatByDates(hourlyWeather),
+        }),
+      ),
       tap((data) => this.logger.consoleMessage('GetResolvedData', data)),
     );
   }
 
   getWeather(cityName: string): Observable<WeatherInterface> {
-    return this.http
-      .get(
-        this.getWeatherUrl(cityName),
-      )
-      .pipe(
-        map((item: any) => this.formatData(item)),
-        tap((data) => this.logger.consoleMessage('GetWeatherData', data)),
-      );
+    return this.http.get(this.getWeatherUrl(cityName)).pipe(
+      map((item: any) => this.formatData(item)),
+      tap((data) => this.logger.consoleMessage('GetWeatherData', data)),
+    );
   }
 
   getHourlyWeather(cityName: string): Observable<WeatherInterface[]> {
-    return this.http
-      .get(
-        this.getForecastUrl(cityName),
-      )
-      .pipe(
-        map((data: any) => {
-          const arr = data.list.map(item => this.formatData(item));
-          return arr;
-        }),
-        tap((data) => this.logger.consoleMessage('GetHourlyWeatherData', data)),
-      );
+    return this.http.get(this.getForecastUrl(cityName)).pipe(
+      map((data: any) => {
+        const arr = data.list.map((item) => this.formatData(item));
+        return arr;
+      }),
+      tap((data) => this.logger.consoleMessage('GetHourlyWeatherData', data)),
+    );
   }
 
   formatData(data: any): WeatherInterface {
     if (data) {
-      return ({
+      return {
         name: data.name,
         clouds: data.clouds.all,
-        temp:  Math.round(data.main.temp),
-        feelsLike:  Math.round(data.main.feels_like),
+        temp: Math.round(data.main.temp),
+        feelsLike: Math.round(data.main.feels_like),
         humidity: data.main.humidity,
         pressure: data.main.pressure,
         description: data.weather[0].description,
@@ -72,14 +61,13 @@ export class GetWeatherService {
         date: moment(data.dt_txt).format('DD.MM.YYYY HH:mm'),
         wind: data.wind.speed,
         dayName: this.getDayName(),
-      });
+      };
     }
-
   }
 
   formatByDates(arr: WeatherInterface[]) {
-    const newArr = arr.map(item => item.date).map(date => date.slice(0, -5).trim());
-    const filteredArr = [... new Set(newArr)];
+    const newArr = arr.map((item) => item.date).map((date) => date.slice(0, -5).trim());
+    const filteredArr = [...new Set(newArr)];
     return filteredArr;
   }
 
@@ -94,9 +82,8 @@ export class GetWeatherService {
   getDayName() {
     const todayDate = new Date();
     const today = todayDate.getDay();
-    const daysArr = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота' ];
+    const daysArr = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
     const dayName = daysArr[today];
     return dayName;
   }
-
 }

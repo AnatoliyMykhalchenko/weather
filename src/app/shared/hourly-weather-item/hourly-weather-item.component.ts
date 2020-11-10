@@ -6,19 +6,14 @@ import { icons } from '../icons';
 @Component({
   selector: 'app-hourly-weather-item',
   templateUrl: './hourly-weather-item.component.html',
-  styleUrls: ['./hourly-weather-item.component.scss']
+  styleUrls: ['./hourly-weather-item.component.scss'],
 })
 export class HourlyWeatherItemComponent implements OnInit {
-
   @Input() hourlyItem;
 
   icons = icons;
 
-  constructor(
-    public iconService: GenerateIconService
-  ) { }
+  constructor(public iconService: GenerateIconService) {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

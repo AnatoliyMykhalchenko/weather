@@ -7,9 +7,7 @@ import { AppModule } from './app.module';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent,
-      ],
+      declarations: [AppComponent],
       imports: [BrowserAnimationsModule, FontAwesomeModule],
     }).compileComponents();
   }));
@@ -19,5 +17,4 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
-
 });

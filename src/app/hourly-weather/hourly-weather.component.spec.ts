@@ -12,11 +12,10 @@ describe('HourlyWeatherComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HourlyWeatherComponent ],
-    imports: [HttpClientTestingModule, BrowserAnimationsModule],
-      providers: [ GenerateIconService, HttpClient ]
-    })
-    .compileComponents();
+      declarations: [HourlyWeatherComponent],
+      imports: [HttpClientTestingModule, BrowserAnimationsModule],
+      providers: [GenerateIconService, HttpClient],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,12 +1,12 @@
 <mat-card fxFlex>
-	<div>
-		<img [src]="iconService.getIconUrl(hourlyItem.icon)" alt="" />
-		<div class="hours">{{ hourlyItem.date | moment }}</div>
-	</div>
-	<app-info-item [value]="hourlyItem.clouds + '%'" [icon]="icons.faCloud"></app-info-item>
-	<app-info-item [value]="hourlyItem.temp + '°C'" [icon]="icons.faTemp"></app-info-item>
-	<app-info-item [value]="hourlyItem.feelsLike + '°C'" [icon]="icons.faFinger"></app-info-item>
-	<div class="item-description">
-		{{ hourlyItem.description | titlecase }}
-	</div>
+  <div>
+    <img [src]="iconService.getIconUrl(hourlyItem.icon)" alt="" />
+    <div class="hours">{{ hourlyItem.date | moment }}</div>
+  </div>
+  <app-info-item [value]="hourlyItem.clouds + '%'" [icon]="icons.faCloud"></app-info-item>
+  <app-info-item [value]="hourlyItem.temp + '°C'" [icon]="icons.faTemp"></app-info-item>
+  <app-info-item [value]="hourlyItem.feelsLike + '°C'" [icon]="icons.faFinger"></app-info-item>
+  <div class="item-description">
+    {{ hourlyItem.description | titlecase }}
+  </div>
 </mat-card>

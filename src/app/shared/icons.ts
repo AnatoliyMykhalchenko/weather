@@ -4,7 +4,7 @@ import {
   faFingerprint,
   faTemperatureLow,
   faTint,
-  faWind
+  faWind,
 } from '@fortawesome/free-solid-svg-icons';
 
 export const icons = {

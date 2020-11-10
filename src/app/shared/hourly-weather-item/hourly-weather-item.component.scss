@@ -1,21 +1,20 @@
 .mat-card {
-	img {
-		width: 70px;
-	}
+  img {
+    width: 70px;
+  }
 
-	font-size: 12px;
-	margin-top: 5px;
-	box-shadow: inset 3px -1px 20px 0px #504d66;
-	width: 120px;
-	background: linear-gradient(130deg, #8a85b1, #f8f9f3);
-	text-align: center;
-	// margin-right: 5px;
+  font-size: 12px;
+  margin-top: 5px;
+  box-shadow: inset 3px -1px 20px 0px #504d66;
+  width: 120px;
+  background: linear-gradient(130deg, #8a85b1, #f8f9f3);
+  text-align: center;
 
-	.hours {
-		margin-top: -20px;
-	}
+  .hours {
+    margin-top: -20px;
+  }
 
-	.item-description {
-		margin-top: 15px;
-	}
+  .item-description {
+    margin-top: 15px;
+  }
 }

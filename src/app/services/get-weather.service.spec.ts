@@ -30,7 +30,7 @@ const mockData: ResolvedWeatherData = {
       name: undefined,
       pressure: 1028,
       temp: 7.9,
-      wind: 3.04
+      wind: 3.04,
     },
     {
       clouds: 47,
@@ -42,7 +42,7 @@ const mockData: ResolvedWeatherData = {
       name: undefined,
       pressure: 1028,
       temp: 7.9,
-      wind: 3.04
+      wind: 3.04,
     },
     {
       clouds: 47,
@@ -54,25 +54,24 @@ const mockData: ResolvedWeatherData = {
       name: undefined,
       pressure: 1028,
       temp: 7.9,
-      wind: 3.04
-    }
-  ]
+      wind: 3.04,
+    },
+  ],
 };
 
 describe('GetWeatherService', () => {
-
   let service;
   let httpTestingController: HttpTestingController;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [HttpClient]
+      providers: [HttpClient],
     });
     httpTestingController = TestBed.get(HttpTestingController);
   }));
 
-  beforeEach(inject([GetWeatherService], s => {
+  beforeEach(inject([GetWeatherService], (s) => {
     service = s;
   }));
 
@@ -85,12 +84,9 @@ describe('GetWeatherService', () => {
     expect(service).toBeTruthy();
   });
 
-
   describe('GetResolvedData()', () => {
     it('should return mockData', () => {
-      service.getResolvedData('Киев').subscribe(
-        data => expect(data).toEqual(mockData),
-      );
+      service.getResolvedData('Киев').subscribe((data) => expect(data).toEqual(mockData));
       const req = httpTestingController.expectOne(service.getWeatherUrl('Киев'));
       expect(req.request.method).toEqual('GET');
       const req2 = httpTestingController.expectOne(service.getForecastUrl('Киев'));
@@ -101,9 +97,7 @@ describe('GetWeatherService', () => {
 
   describe('GetResolvedData()', () => {
     it('should return mockData', () => {
-      service.getResolvedData('Киев').subscribe(
-        data => expect(data).toEqual(mockData),
-      );
+      service.getResolvedData('Киев').subscribe((data) => expect(data).toEqual(mockData));
       const req = httpTestingController.expectOne(service.getWeatherUrl('Киев'));
       expect(req.request.method).toEqual('GET');
       const req2 = httpTestingController.expectOne(service.getForecastUrl('Киев'));
@@ -113,9 +107,7 @@ describe('GetWeatherService', () => {
 
   describe('getWeather()', () => {
     it('should return currentWeather', () => {
-      service.getWeather('Киев').subscribe(
-        data => expect(data).toEqual(mockData.currentWeather),
-      );
+      service.getWeather('Киев').subscribe((data) => expect(data).toEqual(mockData.currentWeather));
       const req = httpTestingController.expectOne(service.getWeatherUrl('Киев'));
       expect(req.request.method).toEqual('GET');
     });
@@ -123,12 +115,9 @@ describe('GetWeatherService', () => {
 
   describe('getHourlyWeather()', () => {
     it('should return hourlyWeather', () => {
-      service.getHourlyWeather('Киев').subscribe(
-        data => expect(data).toEqual(mockData.hourlyWeather),
-      );
+      service.getHourlyWeather('Киев').subscribe((data) => expect(data).toEqual(mockData.hourlyWeather));
       const req = httpTestingController.expectOne(service.getForecastUrl('Киев'));
       expect(req.request.method).toEqual('GET');
     });
   });
 });
-

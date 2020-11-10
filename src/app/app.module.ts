@@ -55,6 +55,6 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

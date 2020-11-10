@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoggerService {
-
-  constructor() { }
+  constructor() {}
 
   consoleMessage(message, data?: any, color: string = 'green'): void {
     console.log(`%c ${message}`, `color: ${color}`, data || '');

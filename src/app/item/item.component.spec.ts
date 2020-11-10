@@ -10,13 +10,11 @@ describe('ItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ItemComponent ],
+      declarations: [ItemComponent],
       imports: [HttpClientTestingModule],
 
-      providers: [ GetWeatherService ]
-
-    })
-    .compileComponents();
+      providers: [GetWeatherService],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -10,11 +10,9 @@ describe('InfoItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InfoItemComponent ],
-      schemas: [ NO_ERRORS_SCHEMA ]
-
-    })
-    .compileComponents();
+      declarations: [InfoItemComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   });
 
   beforeEach(() => {

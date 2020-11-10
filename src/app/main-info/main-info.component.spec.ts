@@ -13,12 +13,11 @@ describe('MainInfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainInfoComponent ],
+      declarations: [MainInfoComponent],
       imports: [HttpClientTestingModule, FontAwesomeModule],
-      providers: [ GenerateIconService ],
-      schemas: [ NO_ERRORS_SCHEMA ]
-    })
-    .compileComponents();
+      providers: [GenerateIconService],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   });
 
   beforeEach(() => {

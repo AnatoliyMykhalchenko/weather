@@ -1,6 +1,6 @@
 <mat-card>
-	<form [formGroup]="cityForm">
-		<input type="text" [formControl]="cityControl" #city placeholder="Введите название города" />
-		<button mat-raised-button (click)="cityControlChangeValue.emit(city.value); cityControl.reset()">Пошук</button>
-	</form>
+  <form [formGroup]="cityForm">
+    <input type="text" [formControl]="cityControl" #city placeholder="Введите название города" />
+    <button mat-raised-button (click)="cityControlChangeValue.emit(city.value); cityControl.reset()">Пошук</button>
+  </form>
 </mat-card>

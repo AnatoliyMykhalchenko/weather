@@ -14,16 +14,12 @@ export class HourlyWeatherComponent {
 
   icons = icons;
 
-  constructor(
-    public iconService: GenerateIconService
-  ) { }
+  constructor(public iconService: GenerateIconService) {}
 
   filterByDate(date: string, arr: WeatherInterface[]) {
-    return arr.filter(item => item.date.includes(date));
+    return arr.filter((item) => item.date.includes(date));
   }
 }
-
-
 
 // import {MatTabChangeEvent, MatTabGroup} from '@angular/material';
 

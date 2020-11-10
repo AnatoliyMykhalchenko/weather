@@ -3,11 +3,10 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-spinner',
   templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.scss']
+  styleUrls: ['./spinner.component.scss'],
 })
 export class SpinnerComponent {
-@Input() showSpinner: boolean;
+  @Input() showSpinner: boolean;
 
-  constructor() { }
-
+  constructor() {}
 }

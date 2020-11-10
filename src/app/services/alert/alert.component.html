@@ -1,3 +1,7 @@
-<p>Неправильно ввели название города</p>
-
-<button mat-button mat-dialog-close>Ок</button>
+<mat-card>
+  <mat-card-title>{{ options.title }}</mat-card-title>
+  <mat-card-content>
+    <p>{{ options.caption }}</p>
+    <button mat-button mat-dialog-close>{{ options.button }}</button>
+  </mat-card-content>
+</mat-card>
