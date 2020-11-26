@@ -1,5 +1,4 @@
 import { Component, Input, Inject } from '@angular/core';
-import { GenerateIconService } from '../services/generate-icon.service';
 import { icons } from '../shared/icons';
 import { WeatherInterface } from './../item/item.types';
 import { DOCUMENT } from '@angular/common';
@@ -14,5 +13,5 @@ export class MainInfoComponent {
 
   icons = icons;
 
-  constructor(readonly iconService: GenerateIconService) {}
+  constructor() {}
 }

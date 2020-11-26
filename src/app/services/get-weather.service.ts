@@ -57,7 +57,7 @@ export class GetWeatherService {
         humidity: data.main.humidity,
         pressure: data.main.pressure,
         description: data.weather[0].description,
-        icon: data.weather[0].icon,
+        icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
         date: moment(data.dt_txt).format('DD.MM.YYYY HH:mm'),
         wind: data.wind.speed,
         dayName: this.getDayName(),

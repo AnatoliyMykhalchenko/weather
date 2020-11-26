@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { WeatherInterface } from 'src/app/item/item.types';
-import { GenerateIconService } from 'src/app/services/generate-icon.service';
 import { icons } from '../icons';
 
 @Component({
@@ -13,7 +12,7 @@ export class HourlyWeatherItemComponent implements OnInit {
 
   icons = icons;
 
-  constructor(public iconService: GenerateIconService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 }

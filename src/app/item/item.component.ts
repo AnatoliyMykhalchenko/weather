@@ -4,7 +4,6 @@ import { catchError, map, shareReplay, tap } from 'rxjs/operators';
 import { AlertService } from '../services/alert/alert.service';
 import { GetWeatherService } from '../services/get-weather.service';
 import { LoggerService } from '../services/logger/logger.service';
-import { GenerateIconService } from './../services/generate-icon.service';
 import { ResolvedWeatherData } from './item.types';
 
 @Component({
@@ -26,7 +25,6 @@ export class ItemComponent {
 
   constructor(
     private weatherService: GetWeatherService,
-    public iconService: GenerateIconService,
     private logger: LoggerService,
     private alertService: AlertService,
   ) {
